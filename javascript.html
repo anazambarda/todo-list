@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #task {
+            height: 35px;
+            margin-left: auto;
+            margin-right: 90px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Lista de tarefas</h1>
+    <form name="form_main">
+        <input type="text" name="task" id="task" placeholder="Exemplo de item"/> <br />
+        <button type="button"
+        onclick="add()">Add</button>    
+    </form>
+    <fieldset>
+        <legend>Tarefas:</legend>
+        <ul>
+            <li>Limpar Casa</li>
+            <li>Outras</li>
+        </ul>
+    </fieldset>
+    <script>
+        function add() {
+            console.log("caiu aqui")
+            let li = document.createElement('LI');
+            let input_value = document.form_main.task.value;
+            let input_text = document.createTextNode(input_value);
+            console.log("input",input_text, input_value)
+            li.appendChild(input_text);
+            document.querySelector('ul').appendChild(li);
+            document.form_main.task.value = "";
+            CreateCloseButton(li)
+        }
+        function CreateCloseButton(li) {
+            let span = document.createElement("SPAN");
+            let txt = document.createTextNode("\u00D7");
+
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span); 
+        
+            span.onclick = () => span.parentElement.style.display = "none";
+        }
+
+            document.querySelectorAll('li').forEach(CreateCloseButton);
+
+            document.querySelectorAll('ul').addEventListener('click',(e) => {
+                if (e.target.tagName === 'LI')
+                e.target.classList.toggle('checked'); });
+        
+    </script>    
+</body>
+</html>
