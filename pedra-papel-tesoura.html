@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jogo de Pedra, Papel e Tesoura</title>
+</head>
+<body>
+
+<h1>Jogo de Pedra, Papel e Tesoura</h1>
+
+<button onclick="jogar('Pedra')">Pedra</button>
+<button onclick="jogar('Papel')">Papel</button>
+<button onclick="jogar('Tesoura')">Tesoura</button>
+<br><br>
+<p id="resultado"></p>
+<p>Placar: <span id="placar"></span></p>
+
+<script>
+  var pontosUsuario = 0;
+  var pontosComputador = 0;
+
+function jogar(jogadaUsuario) {
+  var jogadas = ["Pedra", "Papel", "Tesoura"];
+  var jogadaComputador = jogadas[Math.floor(Math.random() * jogadas.length)];
+
+  if (jogadaUsuario == jogadaComputador) {
+    document.getElementById("resultado").innerHTML = "Empate! Você jogou " + jogadaUsuario + " e o computador jogou " + jogadaComputador + ".";
+  } else if (jogadaUsuario == "Pedra" && jogadaComputador == "Tesoura" || jogadaUsuario == "Papel" && jogadaComputador == "Pedra" || jogadaUsuario == "Tesoura" && jogadaComputador == "Papel") {
+    document.getElementById("resultado").innerHTML = "Você ganhou! Você jogou " + jogadaUsuario + " e o computador jogou " + jogadaComputador + ".";
+    pontosUsuario++;
+  } else {
+    document.getElementById("resultado").innerHTML = "Você perdeu! Você jogou " + jogadaUsuario + " e o computador jogou " + jogadaComputador + ".";
+    pontosComputador++;
+  }
+   document.getElementById("placar").innerHTML = pontosUsuario + " X " + pontosComputador;
+}
+
+</script>
+
+</body>
+</html>

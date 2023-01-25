@@ -6,29 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        li {
+        border-bottom: 1px solid #ddd;
+        text-align: justify;
+        margin: 10px 0;
+        }
+        ul {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            text-align: justify;
+        }
         #task {
-            height: 35px;
-            margin-left: auto;
-            margin-right: 90px;
-            border-radius: 5px;
+                width: 700px;
+                height: 80px;
+                margin-left: auto;
+                margin-right: 90px;
+                border-radius: 5px;
+                font-size: 17px;
+                border-color: rgba(87, 87, 87, 0.541);
+              }
+        .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+             }
+        .container h1 {
             font-size: 18px;
+            font-family: sans-serif;
+            color: rgb(29, 29, 29);
+            margin-top: 20px;
+            
+        }
+        button[type='button'] {
+            background-color: rgb(38, 38, 238);
+            color: white;
+            padding: 15px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        form[name='form_main'] {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <h1> Lista de tarefas</h1>
+    <div class="container">
+    <h1>Awesome Todo List</h1>
     <form name="form_main">
-        <input type="text" name="task" id="task" placeholder="Exemplo de item"/> <br />
+        <input type="text" name="task" id="task" placeholder="What do you need to do today?"/> <br />
         <button type="button"
         onclick="add()">Add</button>    
     </form>
-    <fieldset>
-        <legend>Tarefas:</legend>
         <ul>
             <li>Limpar Casa</li>
             <li>Outras</li>
         </ul>
-    </fieldset>
     <script>
         function add() {
             console.log("caiu aqui")
@@ -58,6 +94,7 @@
                 if (e.target.tagName === 'LI')
                 e.target.classList.toggle('checked'); });
         
-    </script>    
+    </script>   
+    </div> 
 </body>
 </html>
