@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TodoList</title>
     <style>
-        li {
+         li {
         border-bottom: 1px solid #ddd;
         text-align: justify;
         margin: 10px 0;
         list-style-type: none;
-        margin-left: 200px;
-        margin-right: 200px;
+        margin-left: 300px;
+        margin-right: 300px;
         position: relative;
+        font-size: 22px;
         }
         ul {
             flex-direction: column;
@@ -22,32 +23,32 @@
             text-align: justify;
         }
         #task {
-                width: 700px;
-                height: 80px;
-                margin-left: auto;
-                margin-right: 90px;
-                border-radius: 5px;
-                font-size: 17px;
-                border-color: rgba(87, 87, 87, 0.541);
-              }
+            flex:1;
+            height: 80px;
+            margin-right: 35px;
+            border-radius: 5px;
+            font-size: 20px;
+            border-color: rgba(87, 87, 87, 0.541);
+        }
         .container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-             }
+            padding-left: 400px;
+            padding-right: 400px;
+        }
         .container h1 {
             font-size: 18px;
             font-family: sans-serif;
             color: rgb(29, 29, 29);
             margin-top: 20px;
+            text-align: center;
         }
-        button[type='button'] {
-            background-color: rgb(38, 38, 238);
+        .button {
+            background-color: rgb(61, 61, 244);
             color: white;
-            padding: 15px 25px;
-            font-size: 16px;
+            padding: 18px 30px;
+            font-size: 18px;
             border-radius: 5px;
+            border: none;
+            font-weight: bold;
         }
         form[name='form_main'] {
             display: flex;
@@ -58,28 +59,34 @@
             position: absolute;
             right: 0;
         }
+        .checkbox {
+            width: 23px;
+            height: 23px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
     <h1>Awesome Todo List</h1>
-    <form name="form_main">
+    <form name="form_main" onsubmit="add();return false">
         <input type="text" name="task" id="task" placeholder="What do you need to do today?"/>
         <br />
-        <button type="button" onclick="add()">Add</button>    
+        <button class="button" type="submit">ADD</button>    
     </form>
 
     <script>
         function add() {
-            let li = document.createElement('LI');
             let input_value = document.form_main.task.value;
-            let input_text = document.createTextNode(input_value);
-            li.appendChild(input_text);
-            document.querySelector('ul')
-            document.body.appendChild(li);
-            document.form_main.task.value = "";
-            CreateCloseButton(li)
-            addCheckbox(li);
+            if (input_value != "") {
+                let li = document.createElement('LI');
+                let input_text = document.createTextNode(input_value);
+                li.appendChild(input_text);
+                document.querySelector('ul')
+                document.body.appendChild(li);
+                document.form_main.task.value = "";
+                CreateCloseButton(li)
+                addCheckbox(li); 
+            }
         }
         function CreateCloseButton(li) {
             let span = document.createElement("SPAN");
