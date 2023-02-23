@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +11,8 @@
         text-align: justify;
         margin: 10px 0;
         list-style-type: none;
-        margin-left: 300px;
-        margin-right: 300px;
+        margin-left: 400px;
+        margin-right: 400px;
         position: relative;
         font-size: 22px;
         }
@@ -24,11 +24,10 @@
         }
         #task {
             flex:1;
-            height: 80px;
+            height: 50px;
             margin-right: 35px;
+            font-size: 16px;
             border-radius: 5px;
-            font-size: 20px;
-            border-color: rgba(87, 87, 87, 0.541);
         }
         .container {
             padding-left: 400px;
@@ -60,16 +59,17 @@
             right: 0;
         }
         .checkbox {
-            width: 23px;
-            height: 23px;
+            vertical-align: bottom;
+            width: 20px;
+            height: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-    <h1>Awesome Todo List</h1>
+    <h1>Lista de tarefas</h1>
     <form name="form_main" onsubmit="add();return false">
-        <input type="text" name="task" id="task" placeholder="What do you need to do today?"/>
+        <input type="text" name="task" id="task" placeholder="Gostaria de adicionar uma nova tarefa?"/>
         <br />
         <button class="button" type="submit">ADD</button>    
     </form>
